@@ -1,0 +1,10 @@
+ru:
+  model:
+    errors:
+      ad:
+        city:
+          blank: 'Город не может быть пустым'
+        title:
+          blank: 'Заголовок не может быть пустым'
+        description:
+          blank: 'Заголовок не может быть пустым'
