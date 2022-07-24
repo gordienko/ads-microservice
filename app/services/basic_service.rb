@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
+# Basic Service
+#
 module BasicService
+  # Class Methods
   module ClassMethods
     def call(*args)
       new(*args).call

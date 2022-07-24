@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# Validations
+#
 module Validations
   class InvalidParams < StandardError; end
 

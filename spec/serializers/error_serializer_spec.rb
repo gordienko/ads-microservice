@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.describe ErrorSerializer do
+RSpec.describe ErrorSerializer do # rubocop: disable Metrics/BlockLength
   subject { described_class }
 
-  describe 'from_messages' do
+  describe 'from_messages' do # rubocop: disable Metrics/BlockLength
     context 'with single error message' do
       let(:message) { 'Error message' }
 
@@ -46,7 +46,7 @@ RSpec.describe ErrorSerializer do
     end
   end
 
-  describe 'from_model' do
+  describe 'from_model' do # rubocop: disable Metrics/BlockLength
     let(:model) do
       double(
         'model',

@@ -32,4 +32,7 @@ end
 group 'development' do
   gem 'pry', '~> 0.13.1'
   gem 'rubocop', '~> 1.22'
+  gem 'rubocop-rake', '~> 0.6.0'
+  gem 'rubocop-rspec', '~> 2.11'
+  gem 'rubocop-sequel', '~> 0.3.4'
 end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Ad model
+#
 class Ad < Sequel::Model
   def validate
     super

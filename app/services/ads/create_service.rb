@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Ads
+  # Create Ads Service
+  #
   class CreateService
     prepend BasicService
 

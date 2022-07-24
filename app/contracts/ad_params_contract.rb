@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Ad Params Contract
 #
 class AdParamsContract < Dry::Validation::Contract

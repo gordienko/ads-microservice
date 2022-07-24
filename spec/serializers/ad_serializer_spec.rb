@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe AdSerializer do
+RSpec.describe AdSerializer do # rubocop: disable Metrics/BlockLength
   subject { described_class.new([ad], links: links) }
 
   let(:ad) { create(:ad) }

@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 require 'sinatra/extension'
 
+# Api Errors
+#
 module ApiErrors
   extend Sinatra::Extension
 

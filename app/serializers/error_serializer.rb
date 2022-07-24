@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Error Serializer
+#
 module ErrorSerializer
   extend self
 

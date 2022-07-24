@@ -1,4 +1,6 @@
-RSpec.describe AdRoutes, type: :routes do
+# frozen_string_literal: true
+
+RSpec.describe AdRoutes, type: :routes do # rubocop: disable Metrics/BlockLength
   describe 'GET /v1' do
     let(:user_id) { 101 }
 
@@ -14,7 +16,7 @@ RSpec.describe AdRoutes, type: :routes do
     end
   end
 
-  describe 'POST /v1' do
+  describe 'POST /v1' do # rubocop: disable Metrics/BlockLength
     let(:user_id) { 101 }
 
     context 'missing parameters' do

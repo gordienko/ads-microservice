@@ -1,4 +1,6 @@
-RSpec.describe Ads::CreateService do
+# frozen_string_literal: true
+
+RSpec.describe Ads::CreateService do # rubocop: disable Metrics/BlockLength
   subject { described_class }
 
   let(:user_id) { 101 }
@@ -42,7 +44,7 @@ RSpec.describe Ads::CreateService do
 
     it 'does not create ad' do
       expect { subject.call(ad: ad_params, user_id: user_id) }
-        .not_to change { Ad.count }
+        .not_to change(Ad, :count)
     end
 
     it 'assigns ad' do

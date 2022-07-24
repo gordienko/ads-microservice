@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Main Application Loader
 module ApplicationLoader
   extend self
 
@@ -37,7 +38,7 @@ module ApplicationLoader
 
   def require_dir(path)
     path = File.join(root, path)
-    Dir["#{path}/**/*.rb"].each { |file| require file }
+    Dir["#{path}/**/*.rb"].each { |file| require file } # rubocop: disable Lint/NonDeterministicRequireOrder
   end
 
   def root

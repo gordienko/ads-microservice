@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# Ad Routes
+#
 class AdRoutes < Application
   helpers PaginationLinks
 
