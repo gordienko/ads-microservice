@@ -7,6 +7,8 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 gem 'puma', '~> 4.3.0'
 gem 'rake', '~> 13.0.1'
 
+gem 'faraday', '~> 1.10'
+gem 'faraday_middleware', '~> 1.2'
 gem 'sinatra', '~> 2.0', require: 'sinatra/base'
 gem 'sinatra-contrib', '~> 2.0'
 
