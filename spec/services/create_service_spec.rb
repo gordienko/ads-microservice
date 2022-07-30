@@ -4,6 +4,7 @@ RSpec.describe Ads::CreateService do # rubocop: disable Metrics/BlockLength
   subject { described_class }
 
   let(:user_id) { 101 }
+  let(:coordinates) { { 'lat' => 64.7313924, 'lon' => 177.5015421 } }
 
   context 'valid parameters' do
     let(:ad_params) do
@@ -15,12 +16,12 @@ RSpec.describe Ads::CreateService do # rubocop: disable Metrics/BlockLength
     end
 
     it 'creates a new ad' do
-      expect { subject.call(ad: ad_params, user_id: user_id) }
+      expect { subject.call(ad: ad_params, user_id: user_id, coordinates: coordinates) }
         .to change { Ad.count }.from(0).to(1)
     end
 
     it 'assigns ad' do
-      result = subject.call(ad: ad_params, user_id: user_id)
+      result = subject.call(ad: ad_params, user_id: user_id, coordinates: coordinates)
 
       expect(result.ad).to be_kind_of(Ad)
     end
@@ -43,12 +44,12 @@ RSpec.describe Ads::CreateService do # rubocop: disable Metrics/BlockLength
     end
 
     it 'does not create ad' do
-      expect { subject.call(ad: ad_params, user_id: user_id) }
+      expect { subject.call(ad: ad_params, user_id: user_id, coordinates: coordinates) }
         .not_to change(Ad, :count)
     end
 
     it 'assigns ad' do
-      result = subject.call(ad: ad_params, user_id: user_id)
+      result = subject.call(ad: ad_params, user_id: user_id, coordinates: coordinates)
 
       expect(result.ad).to be_kind_of(Ad)
     end
