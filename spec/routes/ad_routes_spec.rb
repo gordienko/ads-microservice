@@ -21,6 +21,10 @@ RSpec.describe AdRoutes, type: :routes do # rubocop: disable Metrics/BlockLength
     let(:auth_token) { 'auth.token' }
     let(:auth_service) { instance_double('Auth service') }
 
+    let(:coordinates) { { 'lat' => 64.7313924, 'lon' => 177.5015421 } }
+    let(:city) { ad_params[:city] }
+    let(:geokoder_service) { instance_double('Geokoder service') }
+
     before do
       allow(auth_service).to receive(:auth)
         .with(auth_token)
@@ -28,10 +32,18 @@ RSpec.describe AdRoutes, type: :routes do # rubocop: disable Metrics/BlockLength
       allow(AuthService::Client).to receive(:new)
         .and_return(auth_service)
 
+      allow(geokoder_service).to receive(:code)
+        .with(city)
+        .and_return(coordinates)
+      allow(GeokoderService::Client).to receive(:new)
+        .and_return(geokoder_service)
+
       header 'Authorization', "Bearer #{auth_token}"
     end
 
     context 'missing parameters' do
+      let(:city) { nil }
+
       it 'returns an error' do
         post '/v1'
 
@@ -79,10 +91,10 @@ RSpec.describe AdRoutes, type: :routes do # rubocop: disable Metrics/BlockLength
 
         expect(last_response.status).to eq(403)
         expect(response_body['errors']).to include(
-                                             {
-                                               'detail' => 'Доступ к ресурсу ограничен',
-                                             }
-                                           )
+          {
+            'detail' => 'Доступ к ресурсу ограничен'
+          }
+        )
       end
     end
 
