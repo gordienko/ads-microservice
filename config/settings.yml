@@ -4,3 +4,9 @@ db:
   user: alx
 pagination:
   page_size: 10
+service:
+  auth:
+    url: http://localhost:3001
+
+rabbitmq:
+  consumer_pool: 10

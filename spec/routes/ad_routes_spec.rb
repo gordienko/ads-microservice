@@ -79,10 +79,10 @@ RSpec.describe AdRoutes, type: :routes do # rubocop: disable Metrics/BlockLength
 
         expect(last_response.status).to eq(403)
         expect(response_body['errors']).to include(
-                                             {
-                                               'detail' => 'Доступ к ресурсу ограничен',
-                                             }
-                                           )
+          {
+            'detail' => 'Доступ к ресурсу ограничен'
+          }
+        )
       end
     end
 
