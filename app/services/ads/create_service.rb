@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'pry'
+
 module Ads
   # Create Ads Service
   #
@@ -13,7 +15,7 @@ module Ads
     end
 
     option :user_id
-    option :geocoder_service, default: proc { GeocoderService::Client.new }
+    option :geocoder_service, default: proc { GeocoderSync::Client.new }
 
     attr_reader :ad
 
@@ -23,7 +25,12 @@ module Ads
 
       if @ad.valid?
         @ad.save
-        @geocoder_service.geocode_later(@ad)
+
+        coordinates = JSON(@geocoder_service.geocode_now(@ad)).transform_keys(&:to_sym)
+        if coordinates.present?
+          @ad.update_fields(coordinates, %i[lat lon])
+        end
+
       else
         fail!(@ad.errors)
       end
